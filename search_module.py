@@ -11,11 +11,13 @@ def binary_search(list_in: list, item: int) -> int:
     low = 0
     high = len(list_in) - 1
     found = False
+    count = 0
     t1 = time.perf_counter()
 
     try:
         while(low <= high and not found):
             mid = (low + high) // 2
+            count += 1
             if list_in[mid] == item:
                 found = True
             else:
@@ -29,7 +31,10 @@ def binary_search(list_in: list, item: int) -> int:
         print(f"{item} is not in list")
 
     t2 = time.perf_counter()
-    print(f"binary search took {t2-t1} seconds")
+    print(f"binary search: {item} found")
+    print(f"in {t2-t1} seconds")
+    print(f"and in {count} halvings")
+
 
 
 def find(list_in: list, item: int) -> int:
