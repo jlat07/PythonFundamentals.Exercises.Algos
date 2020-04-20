@@ -12,22 +12,19 @@ def binary_search(list_in: list, item: int) -> int:
     high = len(list_in) - 1
     count = 0
     t1 = time.perf_counter()
-    try:
-        while low <= high:
-            mid = (low + high) // 2
-            count += 1
-            if list_in[mid] == item:
-                break
-            else:
-                if item < list_in[mid]:
-                    high = mid - 1
-                else:
-                    low = mid + 1
-        print(f"binary search: {item} found at index {list_in.index(item)}")
-    except ValueError:
-        print(f"{item} is not in list")
-
+    while low <= high:
+        count += 1
+        middle = (low + high)//2
+       
+        if list_in[middle] == item:
+            break
+        elif list_in[middle] > item:
+            high = middle - 1
+        else:
+            low = middle + 1
     t2 = time.perf_counter()
+    return list_in.index(item)
+    print(f"binary search: {item} found at index {list_in.index(item)}")
     print(f"elapsed time: {t2-t1} seconds")
     print(f"halvings: {count} ")
 
